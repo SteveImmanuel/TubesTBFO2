@@ -53,9 +53,6 @@ void BilanganKoma(String persamaan, int *indeks, float *hasil)
     float temphasil;
     int tempidx;
     //algoritma
-    // printf("masuk bilangan koma\n");
-    // printf("hasil = %f\n",*hasil);
-    // printf("indeks = %d\n",*indeks);
     temphasil=0;    
     tempidx=*indeks;
     *hasil=0;
@@ -73,14 +70,11 @@ void Angka(String persamaan, int *indeks, float *hasil)
 */
 {
     //algoritma
-    // printf("masuk angka\n");
     *hasil=0;
     while(isNumber(persamaan[*indeks])){
         *hasil=(*hasil)*10+(float)(persamaan[*indeks]-'0');
         (*indeks)++;
     }
-    // printf("hasil = %f\n",*hasil);
-    // printf("indeks = %d\n",*indeks);
 }
 
 void Simbol(String persamaan, int *indeks, float *hasil, int *status)
@@ -96,7 +90,6 @@ void Simbol(String persamaan, int *indeks, float *hasil, int *status)
     int sign;
     float tempfloat;
     //algoritma
-    // printf("masuk simbol\n");
     sign =1;
     tempfloat = 0;
     if(persamaan[*indeks]=='('){
@@ -105,14 +98,12 @@ void Simbol(String persamaan, int *indeks, float *hasil, int *status)
         if(persamaan[*indeks]==')'){
             (*indeks)++;                                    
         }else{
-            // printf("masuk sini\n");
             *status=1;
         }                                                                    
     }else{
         if(persamaan[*indeks]=='-'){
             sign=-1;
-            printf("masuk sini 1\n");
-            (*indeks)++; // <- ini errornya
+            (*indeks)++;
         }
         if(isNumber(persamaan[*indeks])){
             Angka(persamaan,indeks,hasil);
@@ -141,11 +132,8 @@ void Pangkat(String persamaan, int *indeks, float *hasil, int *status)
     float tempHasil;
     int tempIndeks;
     //algoritma
-    // printf("masuk pangkat\n");
     if (*indeks<lenInput){
         Simbol(persamaan,indeks,hasil,status);
-        // printf("hasil = %f\n",*hasil);
-        // printf("indeks = %d\n",*indeks);
         if (!(*status)){ /* status == 0, valid */
             while(persamaan[*indeks]=='^' && !(*status)){
                 tempIndeks = *indeks;
@@ -177,11 +165,8 @@ void KaliBagi(String persamaan, int *indeks, float *hasil, int *status)
     float tempHasil;
     int tempIndeks;
     //algoritma
-    // printf("masuk kalibagi\n");
     if (*indeks<lenInput){
         Pangkat(persamaan,indeks,hasil,status);
-        // printf("hasil = %f\n",*hasil);
-        // printf("indeks = %d\n",*indeks);
         if (!(*status)){ /* status == 0, valid */
             while((persamaan[*indeks]=='*' || persamaan[*indeks]=='/') && !(*status)){
                 tempIndeks = *indeks;
@@ -216,11 +201,8 @@ void TambahKurang(String persamaan, int *indeks, float *hasil, int *status)
     float tempHasil;
     int tempIndeks;
     //algoritma
-    // printf("masuk tambahkurang\n");
     if (*indeks<lenInput){
         KaliBagi(persamaan,indeks,hasil,status);
-        // printf("hasil = %f\n",*hasil);
-        // printf("indeks = %d\n",*indeks);
         if (!(*status)){ /* status == 0, valid */
             while((persamaan[*indeks]=='+' || persamaan[*indeks]=='-') && !(*status)){
                 tempIndeks = *indeks;
