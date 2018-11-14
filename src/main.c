@@ -3,57 +3,71 @@
 #include <string.h>
 #include <stdbool.h>
 #include "operation.h"
-
-#define ValUndeff -999
-
-int castInt(String kata)
-//fungsi yang menghasilkan nilai integer
-{
-  //Kamus Lokal
-  int value;
-  int digit;
-  int i;
-
-  //Algoritma
-  value = 0;i
   
-  digit = strlen(kata);
-  if(digit==0)
-    return ValUndeff;
-  else{
-    while(i<digit)
-  }
+// bool isPilihanValid(String Kata)
+// //Fungsi mengeluarkan true jika pilihan yang dimasukan valid
+// {
+//   //Kamus lokal
+//   bool found;
+//   int digit;  
 
-}
-  
+//   //Algoritma
+//   digit = str.len(Kata);
+//   if(digit!=1)
+//     found = false;
+//   else
+//     if()
+//   return found;
+// }
 
 int main(){
   //Kamus
   int pilihan;
   String input;
-  int panjangKata;
+  int status; 
+  float hasil;
+  int indeks;
 
-  //Algoritma Utama
+  // Algoritma Utama
   do{
     printf("CALCULATOR\n");
     printf("1. Calculate\n");
     printf("2. Exit\n");
 
     printf(">> ");
-    scanf("%s, &input");
+    scanf("%d", &pilihan);
 
-    while(input!=1 && input!=2){
-      printf("Input yang dimasukan salah.\n");
+    while(pilihan!=1 && pilihan!=2){
+      printf("Input yang dimasukan tidak ada.\n");
       printf(">> ");
-      scanf("%s",&input);
-    } //input = 1 atau input = 2
+      scanf("%d",&pilihan);
+    } //pilihan = 1 atau pilihan = 2
 
-    if(input==1){
-
-      panjanginput = strlen(input)
+    if(pilihan==1){
+      status = 0;
+      indeks = 0;
+      printf("Calculate : ");     
+      scanf("%s", input);
+      lenInput = strlen(input);
+      TambahKurang(input,&indeks,&hasil,&status);
+      if(status==0){
+        printf("%f\n",hasil);      
+      } else if (status == 1){
+        printf("SYNTAX ERROR\n");
+      } else if (status == 2){
+        printf("MATH ERROR\n");
+      }
+      printf("\n");
     }
       
-  } while(input!= 2);
+  } while(pilihan!= 2);
+  
+  
+  // digit = strlen(kata);
+  // if(digit==0)
+  //   return ValUndeff;
+  // else{
+  //   while(i<digit)
+  // }
 
-  return 0;
 }

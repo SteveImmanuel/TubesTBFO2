@@ -1,0 +1,87 @@
+LINE x vxCODE
+J:  hai guys..
+S:  wow..
+W:  nanti ini masuk folder doc
+S:  *masuk <- aduh tinggal lw benerin
+J:  XD
+S:  bukannya bintang nya bagusan nempel ke typenya
+    @J?
+J:  g tau sih, biasa gw nulisnya bgtu :/
+S:  ok deh
+W:  kalau main punya parameter itu jadinya gimana ?
+S:  coba cari di inet
+    gw juga kurang paham
+J:  emg diminta ?
+W:  cuman ngeliat si andrew pake parameter args bla bla bla
+J:  kalau g ada di spek jangan..
+    ntr ketauan 
+W:  Kita mau pake menu ada exitnya ?
+    yang si andrew bikin sekali run buat ngitung sekali    
+S:  boleh aja , asal bagus aja
+W:  okee coba pake menu
+J:  patiin programnya g bsa crash dengan input apapaun yg sesuai spek
+W:  kalau inputnya selalu string gimana mau crash ? <- y kan bisi
+S:  lol ini bener2 mirip
+W:  mirip apa steve ?
+S:  yg programnya andrew
+w:  bedanya ga ada pangkat :)
+J:  lagian lw tau panjng inputnya berapa :/ ?  <- ada maksimalnya kah ?
+S:  secukupnya aja..ini .h nya gw copy ke .c ya
+J:  ywdh deh XD
+S:  kan plg kurang komen doang
+S:  btw knp kita ga pake stdbool aja sih?
+    biar gwsh ada boolean.h
+J:  udh ilang juga
+S:  apanya?
+J:  udh g pake kan boolean.h
+S:  oo iya <- (y)
+J:  ini willy kebiasaan >> XD
+W:  pake apa dongs wkwkwk
+J:  emm ya g perlu sih xD paling tulis equation..
+    kalau kata josh, pake $ kalau g harus masukin input
+    misalnya pas milih antara 1 atau 2
+    sisanya g ada apa2.. XD
+W:  jadi kita pake $ buat printf"nya ?
+J:  cuman kalau kondisi g harus nginput
+W:  ntar belakangan deh ya
+S:  Angka ini ngebalikinnya udh panjang gitu
+    apa cuman per karakter @johanes?
+J:  udh jadi satu angka float harusnya
+    gw mikirnya gtu sih :/
+    btw kynya persamaan g perlu di bintangin g sih ?
+S:  ywdh brarti kaga usah direkursifin dah <- memang
+W:  kalau procedure pengen parameter inputnya string gimana ? 
+    harus bikin typedef string?
+J:  eh bener juga deng.. g jdi XD   
+    char* kan string  <- okee
+W:  eh kalau stdbool itu tipe booleannya boolean atau bool ?
+S:  bool
+W:  okee thank you steve
+S:  isNumber((*persamaan)[*indeks]), itu knp yg bagian *indeks salah?
+W:  kalau dia inputnya huruf tapi scanf %d jadi error Jo
+J:  maksudnya knp g tipe fungsinya int aja XD
+W:  ooo bole juga sih
+J:  atau mau bikin tipe string ya ?
+S:  hah knp gitu?
+    salah konteks jo, gw ngomongin yg indeks <- yang barusan gw benerin kan ? heeh
+J:  ya maka dari itu biar g bingung XD mau kah ?
+    ya makanya gw nnya, mau bikin tipe string ga
+    gw juga g bgtu kebayang knp
+S:  sok aja sih
+J:  gtu g sih ? XD
+S:  heeh
+W:  pake String yah bukan char* jadi <- (y)
+S:  eh ttp string* ya <- engga
+    eh iya deng
+J:  ko kaya tipenya aneh ya XD
+S:  apa anehnya?
+J:  gw mikirnya g ada .string nya
+S:  ok ok
+W:  Jo Steve kalau casting char ke int nya gagal langsung error yah?
+    ari di python kan pake try except, kalau di C gimana? 
+S:  oo bener juga yg tadi t char* gapake * ya
+    gw lupa itu bukan i/o  <- gpp biar universal aja namanya string      
+S:  google will wkwk..try catch in c
+J:  validate input in C <- maksudnya di googlein ?
+    heeh will
+J:  stip

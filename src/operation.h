@@ -4,6 +4,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <math.h>
 
 /*
 S -> K | S+K | S-K      tambah kurang
@@ -21,6 +22,16 @@ int isNumber(char x);
 /*
   fungsi bernilai 1 jika karakter yang dimasukkan adalah bilangan
   dengan 0 <= x <= 9 dan 0 jika tidak
+*/
+int isFloat(float x);
+/*
+  fungsi bernilai 1 jika float yang dimasukkan adalah bilangn bulat
+  dan 0 jika tidak
+*/
+int isPangkatValid(float op1, float op2);
+/*
+  fungsi bernilai 1 jika pangkat valid, dan 0 jika tidak
+  op1 ^ op2
 */
 void BilanganKoma(String persamaan, int *indeks, float *hasil);
 /*
