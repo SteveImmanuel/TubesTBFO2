@@ -1,28 +1,36 @@
-
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
 #include "operation.h"
+#include <unistd.h>
   
-// bool isPilihanValid(String Kata)
-// //Fungsi mengeluarkan true jika pilihan yang dimasukan valid
-// {
-//   //Kamus lokal
-//   bool found;
-//   int digit;  
+bool isPilihanValid(String Kata)
+//Fungsi mengeluarkan true jika pilihan yang dimasukan valid
+{
+  //Kamus lokal
+  bool found;
+  int digit;  
 
-//   //Algoritma
-//   digit = str.len(Kata);
-//   if(digit!=1)
-//     found = false;
-//   else
-//     if()
-//   return found;
-// }
+  //Algoritma
+  digit = 0;
+  while(Kata[digit]!='\0')
+  {
+    digit++;
+  }
+  if(digit!=1)
+    found = false;
+  else
+    if(Kata[0]=='1' || Kata[0]=='2')
+      found = true;
+    else
+      found = false;
+  return found;
+}
 
 int main(){
   //Kamus
-  int pilihan;
+  String pilihan;
   String input;
   int status; 
   float hasil;
@@ -35,15 +43,16 @@ int main(){
     printf("2. Exit\n");
 
     printf(">> ");
-    scanf("%d", &pilihan);
-
-    while(pilihan!=1 && pilihan!=2){
+    pilihan = (char*) malloc (100* sizeof(char));
+    scanf("%s", pilihan);
+    while(!isPilihanValid(pilihan)){
       printf("Input yang dimasukan tidak ada.\n");
       printf(">> ");
-      scanf("%d",&pilihan);
+      scanf("%s",pilihan);
     } //pilihan = 1 atau pilihan = 2
 
-    if(pilihan==1){
+    
+    if(pilihan[0]=='1'){
       status = 0;
       indeks = 0;
       printf("Calculate : ");     
@@ -60,14 +69,7 @@ int main(){
       printf("\n");
     }
       
-  } while(pilihan!= 2);
-  
-  
-  // digit = strlen(kata);
-  // if(digit==0)
-  //   return ValUndeff;
-  // else{
-  //   while(i<digit)
-  // }
-
+  } while(pilihan[0]!= '2');
+  printf("Terimakasih!\n"); 
+  sleep(0.5);
 }
