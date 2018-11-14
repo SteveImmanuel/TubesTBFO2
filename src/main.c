@@ -71,5 +71,5 @@ int main(){
       
   } while(pilihan[0]!= '2');
   printf("Terimakasih!\n"); 
-  sleep(0.5);
+  sleep(1);
 }

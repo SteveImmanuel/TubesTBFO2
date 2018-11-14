@@ -60,9 +60,9 @@ void BilanganKoma(String persamaan, int *indeks, float *hasil)
     tempidx=*indeks;
     *hasil=0;
     Angka(persamaan,indeks,&temphasil);
-    while(isNumber(persamaan[*indeks])){
-        temphasil/=10;
-        *indeks++;                        
+    while(isNumber(persamaan[tempidx])){
+        temphasil/=(float)10;
+        tempidx++;                     
     }
     *hasil=temphasil;    
 }
@@ -111,21 +111,17 @@ void Simbol(String persamaan, int *indeks, float *hasil, int *status)
     }else{
         if(persamaan[*indeks]=='-'){
             sign=-1;
+            printf("masuk sini 1\n");
             (*indeks)++; // <- ini errornya
         }
         if(isNumber(persamaan[*indeks])){
             Angka(persamaan,indeks,hasil);
-            // printf("hasil = %f\n",*hasil);
-            // printf("indeks = %d\n",*indeks);
             if(persamaan[*indeks]=='.'){ //kasus float
                 (*indeks)++;
-                BilanganKoma(persamaan,indeks,&tempfloat);
-                (*hasil)+=tempfloat;                                    
+                BilanganKoma(persamaan,indeks,&tempfloat);                                 
             }
             (*hasil)=((*hasil)+tempfloat)*sign;
-            //  printf("%f\n",*hasil);
         }else{
-            // printf("masuk sini2");
             *status=1;
         }        
     }
