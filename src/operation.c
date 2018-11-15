@@ -45,7 +45,7 @@ int isNumber(char x)
   dengan 0 <= x <= 9 dan 0 jika tidak
 */
 {
-    //algritma
+    //algoritma
     if(x>='0' && x<='9'){
         return 1;
     }else{
