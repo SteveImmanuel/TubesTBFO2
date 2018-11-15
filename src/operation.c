@@ -90,15 +90,15 @@ void BilanganKoma(String persamaan, int *indeks, float *hasil)
     float temphasil;
     int tempidx;
     //algoritma
-    temphasil=0;    
+    temphasil=0;
     tempidx=*indeks;
     *hasil=0;
     Angka(persamaan,indeks,&temphasil);
     while(isNumber(persamaan[tempidx])){
         temphasil/=(float)10;
-        tempidx++;                     
+        tempidx++;
     }
-    *hasil=temphasil;    
+    *hasil=temphasil;
 }
 void Angka(String persamaan, int *indeks, float *hasil)
 /*
@@ -133,10 +133,10 @@ void Simbol(String persamaan, int *indeks, float *hasil, int *status)
         (*indeks)++;
         TambahKurang(persamaan,indeks,hasil,status);
         if(persamaan[*indeks]==')'){
-            (*indeks)++;                                    
+            (*indeks)++;
         }else{
             *status=1;
-        }                                                                    
+        }
     }else{
         if(persamaan[*indeks]=='-'){
             sign=-1;
@@ -146,12 +146,21 @@ void Simbol(String persamaan, int *indeks, float *hasil, int *status)
             Angka(persamaan,indeks,hasil);
             if(persamaan[*indeks]=='.'){ //kasus float
                 (*indeks)++;
-                BilanganKoma(persamaan,indeks,&tempfloat);                                 
+                BilanganKoma(persamaan,indeks,&tempfloat);
             }
             (*hasil)=((*hasil)+tempfloat)*sign;
+        }else if(persamaan[*indeks]=='('){
+            (*indeks)++;
+            TambahKurang(persamaan,indeks,hasil,status);
+            if(persamaan[*indeks]==')'){
+                (*hasil)*=sign;
+                (*indeks)++;
+            }else{
+                *status=1;
+            }
         }else{
             *status=1;
-        }        
+        }
     }
 }
 
@@ -184,7 +193,7 @@ void Pangkat(String persamaan, int *indeks, float *hasil, int *status)
                     }
                 }
             }
-        } 
+        }
     }
 }
 
@@ -221,7 +230,7 @@ void KaliBagi(String persamaan, int *indeks, float *hasil, int *status)
                     }
                 }
             }
-        } 
+        }
     }
 }
 void TambahKurang(String persamaan, int *indeks, float *hasil, int *status)
@@ -253,6 +262,6 @@ void TambahKurang(String persamaan, int *indeks, float *hasil, int *status)
                     }
                 }
             }
-        } 
+        }
     }
 }
