@@ -3,6 +3,9 @@
 int lenInput;
 
 int PDA (String persamaan)
+/*
+  fungsi bernilai 1 jika jumlah '(' sama dengan jumlah ')'
+*/
 {
     //Kamus
     int indeks;

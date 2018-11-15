@@ -13,11 +13,7 @@ bool isPilihanValid(String Kata)
   int digit;  
 
   //Algoritma
-  digit = 0;
-  while(Kata[digit]!='\0')
-  {
-    digit++;
-  }
+  digit = strlen(Kata);
   if(digit!=1)
     found = false;
   else
@@ -41,16 +37,16 @@ int main(){
     printf("CALCULATOR\n");
     printf("1. Calculate\n");
     printf("2. Exit\n");
-
-    printf(">> ");
     pilihan = (char*) malloc (100* sizeof(char));
-    scanf("%s", pilihan);
-    while(!isPilihanValid(pilihan)){
-      printf("Input yang dimasukan tidak ada.\n");
-      printf(">> ");
-      scanf("%s",pilihan);
-    } //pilihan = 1 atau pilihan = 2
 
+    do{
+      printf(">> ");
+      scanf("\n%[^\n]s", pilihan);
+      if(!isPilihanValid(pilihan)){
+        printf("Input yang dimasukan tidak ada.\n");
+      }
+    }while(!isPilihanValid(pilihan));
+    //input pilihan valid   
     
     if(pilihan[0]=='1'){
       status = 0;
@@ -74,6 +70,8 @@ int main(){
     }
       
   } while(pilihan[0]!= '2');
+  //pilihan[0] = 2
+
   printf("Terima Kasih!\n"); 
   sleep(0.75);
 }
