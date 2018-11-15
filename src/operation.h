@@ -41,7 +41,7 @@ int isNumber(char x);
 */
 int isFloat(float x);
 /*
-  fungsi bernilai 1 jika float yang dimasukkan adalah bilangn bulat
+  fungsi bernilai 1 jika float yang dimasukkan adalah bilangan bulat
   dan 0 jika tidak
 */
 int isPangkatValid(float op1, float op2);
