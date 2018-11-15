@@ -58,18 +58,22 @@ int main(){
       printf("Calculate : ");     
       scanf("%s", input);
       lenInput = strlen(input);
-      TambahKurang(input,&indeks,&hasil,&status);
-      if(status==0){
-        printf("%f\n",hasil);      
-      } else if (status == 1){
+      if(PDA(input)){
+        TambahKurang(input,&indeks,&hasil,&status);
+        if(status==0){
+          printf("%f\n",hasil);      
+        } else if (status == 1){
+          printf("SYNTAX ERROR\n");
+        } else if (status == 2){
+          printf("MATH ERROR\n");
+        }
+      }else{
         printf("SYNTAX ERROR\n");
-      } else if (status == 2){
-        printf("MATH ERROR\n");
       }
       printf("\n");
     }
       
   } while(pilihan[0]!= '2');
-  printf("Terimakasih!\n"); 
-  sleep(1);
+  printf("Terima Kasih!\n"); 
+  sleep(0.75);
 }

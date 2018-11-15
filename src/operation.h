@@ -14,9 +14,25 @@ I -> (S) | A | -A | A.A | -A.A      simbol
 A -> 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | AA angka
 */
 
+/* PDA
+   q,(,Z = q,XZ
+   q,(,X = q,XX
+   q,),X = q,e
+*/
+
 #define String char* /* tipe bentukan string dari char* */
 
+typedef struct{
+  char memory[100];
+  int top;
+}Stack;
+
 extern int lenInput; /* variabel untuk menyatakan panjang dari persamaan input */
+
+int PDA (String persamaan);
+/*
+  ntar diisi
+*/
 
 int isNumber(char x);
 /*

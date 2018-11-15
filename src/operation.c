@@ -2,6 +2,40 @@
 
 int lenInput;
 
+int PDA (String persamaan)
+{
+    //Kamus
+    int indeks;
+    Stack S;
+
+    //Algoritma
+    indeks = 0;
+    S.top = 1;
+    S.memory[S.top] = 'Z';
+    while(indeks < lenInput){
+        if(persamaan[indeks]=='('){
+            if((S.memory[S.top]=='Z') || (S.memory[S.top]=='X')){
+                S.top++;
+                S.memory[S.top] = 'X';
+            }else{
+                return 0;
+            }
+        }else if (persamaan[indeks]==')'){
+            if(S.memory[S.top]=='X'){
+                S.memory[S.top] = '#';
+                S.top--;
+            }else{
+                return 0;
+            }
+        }
+        indeks++;
+    }
+    if(S.memory[S.top]=='Z'){
+        return 1;
+    }
+}
+
+
 int isNumber(char x)
 /*
   fungsi bernilai 1 jika karakter yang dimasukkan adalah bilangan
