@@ -73,7 +73,7 @@ int isPangkatValid(float op1, float op2)
 {
     if (op1 < 0 && isFloat(op2)){
         return 0;
-    } else if (op1 == 0 && op2 <0){
+    } else if (op1 == 0 && op2 <=0){
         return 0;
     } else {
         return 1;
