@@ -31,17 +31,17 @@ A -> 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | AA angka
 
 #define String char* /* tipe bentukan string dari char* */
 
-typedef struct{
-  char memory[100]; //memori menyimpan data stack
-  int top;          //indeks posisi top of stack
-}Stack;
+// typedef struct{
+//   char memory[100]; //memori menyimpan data stack
+//   int top;          //indeks posisi top of stack
+// }Stack;
 
 extern int lenInput; /* variabel untuk menyatakan panjang dari persamaan input */
 
-int PDA (String persamaan);
-/*
-  fungsi bernilai 1 jika jumlah '(' sama dengan jumlah ')'
-*/
+// int PDA (String persamaan);
+// /*
+//   fungsi bernilai 1 jika jumlah '(' sama dengan jumlah ')'
+// */
 
 int isOperator (char x);
 /*

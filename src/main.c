@@ -2,24 +2,35 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
-#include "operation.h"
 #include <unistd.h>
 #include <ctype.h>
+<<<<<<< HEAD
+=======
+#include "operation.h"
+#include "PDA.h"
+
+>>>>>>> implementasi pda untuk validasi input
 
 bool isExit(String Kata)
 //fungsi mengeluarkan true jika string yang dimasukkan adalah 'exit'
 {
   //Kamus lokal
   bool found;
-  int huruf;
+  int huruf,i;
 
   //Algoritma
   huruf = strlen(Kata);
+<<<<<<< HEAD
 
   for(int i=0; Kata[i];i++){
     Kata[i] = tolower(Kata[i]);
   }
 
+=======
+  for(i=0;i<huruf;i++){
+    Kata[i]=tolower(Kata[i]);
+  }
+>>>>>>> implementasi pda untuk validasi input
   if(huruf!=4)
     found = false;
   else

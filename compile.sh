@@ -1,3 +1,3 @@
 #!/bin/bash
 
-gcc src/main.c src/operation.c -o bin/main -lm
+gcc src/main.c src/operation.c src/PDA.c -o bin/main -lm
