@@ -63,7 +63,7 @@ int isPangkatValid(float op1, float op2);
   fungsi bernilai 1 jika pangkat valid, dan 0 jika tidak
   op1 ^ op2
 */
-void BilanganKoma(String persamaan, int *indeks, float *hasil);
+void BilanganKoma(String persamaan, int *indeks, float *hasil, int *status);
 /*
   I.S. persamaan dan indeks terdefinisi
   F.S. prosedur mengembalikan bilangan 0. yang diawali dari indeks

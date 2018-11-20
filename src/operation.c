@@ -104,7 +104,7 @@ int isPangkatValid(float op1, float op2)
     }
 }
 
-void BilanganKoma(String persamaan, int *indeks, float *hasil)
+void BilanganKoma(String persamaan, int *indeks, float *hasil, int *status)
 /*
   I.S. persamaan dan indeks terdefinisi, persamaan[*indeks] berada di satu angka setelah koma
   F.S. prosedur mengembalikan bilangan 0. yang diawali dari indeks
@@ -117,12 +117,18 @@ void BilanganKoma(String persamaan, int *indeks, float *hasil)
     temphasil=0;
     tempidx=*indeks;
     *hasil=0;
-    Angka(persamaan,indeks,&temphasil);
-    while(isNumber(persamaan[tempidx])){
-        temphasil/=(float)10;
-        tempidx++;
+    if(isNumber(persamaan[*indeks])){
+        Angka(persamaan,indeks,&temphasil);
+        while(isNumber(persamaan[tempidx])){
+            temphasil/=(float)10;
+            tempidx++;
+            printf("%f\n",temphasil);
+        }
+        *hasil=temphasil;
+    }else{
+        *status=1;
     }
-    *hasil=temphasil;
+    
 }
 void Angka(String persamaan, int *indeks, float *hasil)
 /*
@@ -135,7 +141,7 @@ void Angka(String persamaan, int *indeks, float *hasil)
     while(isNumber(persamaan[*indeks])){
         *hasil=(*hasil)*10+(float)(persamaan[*indeks]-'0');
         (*indeks)++;
-    }
+    }  
 }
 
 void Simbol(String persamaan, int *indeks, float *hasil, int *status)
@@ -170,7 +176,7 @@ void Simbol(String persamaan, int *indeks, float *hasil, int *status)
             Angka(persamaan,indeks,hasil);
             if(persamaan[*indeks]=='.'){ //kasus float
                 (*indeks)++;
-                BilanganKoma(persamaan,indeks,&tempfloat);
+                BilanganKoma(persamaan,indeks,&tempfloat,status);
             }
             (*hasil)=((*hasil)+tempfloat)*sign;
         }else if(persamaan[*indeks]=='('){
