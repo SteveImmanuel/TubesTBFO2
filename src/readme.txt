@@ -28,4 +28,8 @@
 /* Anggota Kelompok */
 - Johanes                 - 13517012
 - Steve Andreas Immanuel  - 13517039
+<<<<<<< HEAD
 - Willy Santoso           - 13517066
+=======
+- Willy Santoso           - 13517066
+>>>>>>> include readme
