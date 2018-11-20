@@ -15,9 +15,18 @@ A -> 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | AA angka
 */
 
 /* PDA
-   q,(,Z = q,XZ
-   q,(,X = q,XX
-   q,),X = q,e
+   q0,(,Z = q0,XZ
+   q0,(,X = q0,XX
+   q0,),X = q0,e
+   q0,+,Z = q1,Z
+   q0,-,Z = q1,Z
+   q0,*,Z = q1,Z
+   q0,/,Z = q1,Z
+   q0,^,Z = q1,Z
+   q1,(,Z = q0,XZ
+   q1,(,X = q0,XX
+   q1,(string selain operator),X = q0,X
+   q1,(string selain operator),Z = q0,Z
 */
 
 #define String char* /* tipe bentukan string dari char* */
@@ -32,6 +41,11 @@ extern int lenInput; /* variabel untuk menyatakan panjang dari persamaan input *
 int PDA (String persamaan);
 /*
   fungsi bernilai 1 jika jumlah '(' sama dengan jumlah ')'
+*/
+
+int isOperator (char x);
+/*
+  fungsi bernilai 1 jika jumlah x adalah +,-,*,/,atau^
 */
 
 int isNumber(char x);

@@ -8,28 +8,45 @@ int PDA (String persamaan)
 */
 {
     //Kamus
-    int indeks;
+    int indeks,state;
     Stack S;
 
     //Algoritma
     indeks = 0;
+    state=0;
     S.top = 1;
     S.memory[S.top] = 'Z';
     while(indeks < lenInput){
-        if(persamaan[indeks]=='('){
+        if(persamaan[indeks]=='(' && state==0){
             if((S.memory[S.top]=='Z') || (S.memory[S.top]=='X')){
                 S.top++;
                 S.memory[S.top] = 'X';
+                state=0;
             }else{
                 return 0;
             }
-        }else if (persamaan[indeks]==')'){
+        }else if (persamaan[indeks]==')' && state==0){
             if(S.memory[S.top]=='X'){
                 S.memory[S.top] = '#';
                 S.top--;
+                state=0;
             }else{
                 return 0;
             }
+        }else if (isOperator(persamaan[indeks]) && state==0){
+            state=1;
+        }else if (isOperator(persamaan[indeks]) && state==1){
+            return 0; 
+        }else if (persamaan[indeks]=='(' && state==1){
+            if((S.memory[S.top]=='Z') || (S.memory[S.top]=='X')){
+                S.top++;
+                S.memory[S.top] = 'X';
+                state=0;
+            }else{
+                return 0;
+            }
+        }else if (!isOperator(persamaan[indeks]) && state==1){
+            state=0;
         }
         indeks++;
     }
@@ -38,6 +55,13 @@ int PDA (String persamaan)
     }
 }
 
+int isOperator (char x)
+/*
+  fungsi bernilai 1 jika jumlah x adalah +,-,*,/,atau^
+*/
+{
+    return x=='*' || x=='/' || x=='^' || x=='+' || x=='-';
+}
 
 int isNumber(char x)
 /*
