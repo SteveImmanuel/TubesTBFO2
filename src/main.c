@@ -4,6 +4,7 @@
 #include <stdbool.h>
 #include "operation.h"
 #include <unistd.h>
+#include <ctype.h>
 
 bool isExit(String Kata)
 //fungsi mengeluarkan true jika string yang dimasukkan adalah 'exit'
@@ -14,10 +15,15 @@ bool isExit(String Kata)
 
   //Algoritma
   huruf = strlen(Kata);
+
+  for(int i=0; Kata[i];i++){
+    Kata[i] = tolower(Kata[i]);
+  }
+
   if(huruf!=4)
     found = false;
   else
-    if((Kata[0]=='E' || Kata[0]=='e') && (Kata[1]=='X' || Kata[1]=='x') && (Kata[2]=='I' || Kata[2]=='i') && (Kata[3]=='T' || Kata[3]=='t'))
+    if((Kata[0]=='e') && (Kata[1]=='x') && (Kata[2]=='i') && (Kata[3]=='t'))
       found = true;
     else
       found = false;
