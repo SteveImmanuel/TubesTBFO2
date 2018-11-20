@@ -122,7 +122,6 @@ void BilanganKoma(String persamaan, int *indeks, float *hasil, int *status)
         while(isNumber(persamaan[tempidx])){
             temphasil/=(float)10;
             tempidx++;
-            printf("%f\n",temphasil);
         }
         *hasil=temphasil;
     }else{
@@ -291,6 +290,9 @@ void TambahKurang(String persamaan, int *indeks, float *hasil, int *status)
                         *hasil -= tempHasil;
                     }
                 }
+            }
+            if(persamaan[*indeks]=='.' || persamaan[*indeks]=='(' || persamaan[*indeks]==')' || isOperator(persamaan[*indeks])){
+                *status=1;
             }
         }
     }
