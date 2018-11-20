@@ -2,64 +2,12 @@
 
 int lenInput;
 
-// int PDA (String persamaan)
-// /*
-//   fungsi bernilai 1 jika jumlah '(' sama dengan jumlah ')'
-// */
-// {
-//     //Kamus
-//     int indeks,state;
-//     Stack S;
-
-//     //Algoritma
-//     indeks = 0;
-//     state=0;
-//     S.top = 1;
-//     S.memory[S.top] = 'Z';
-//     while(indeks < lenInput){
-//         if(persamaan[indeks]=='(' && state==0){
-//             if((S.memory[S.top]=='Z') || (S.memory[S.top]=='X')){
-//                 S.top++;
-//                 S.memory[S.top] = 'X';
-//                 state=0;
-//             }else{
-//                 return 0;
-//             }
-//         }else if (persamaan[indeks]==')' && state==0){
-//             if(S.memory[S.top]=='X'){
-//                 S.memory[S.top] = '#';
-//                 S.top--;
-//                 state=0;
-//             }else{
-//                 return 0;
-//             }
-//         }else if (isOperator(persamaan[indeks]) && state==0){
-//             state=1;
-//         }else if (isOperator(persamaan[indeks]) && state==1){
-//             return 0; 
-//         }else if (persamaan[indeks]=='(' && state==1){
-//             if((S.memory[S.top]=='Z') || (S.memory[S.top]=='X')){
-//                 S.top++;
-//                 S.memory[S.top] = 'X';
-//                 state=0;
-//             }else{
-//                 return 0;
-//             }
-//         }else if (!isOperator(persamaan[indeks]) && state==1){
-//             state=0;
-//         }
-//         indeks++;
-//     }
-//     if(S.memory[S.top]=='Z'){
-//         return 1;
-//     }
-// }
-
 int isOperator (char x)
 /*
   fungsi bernilai 1 jika jumlah x adalah +,-,*,/,atau^
 */
 {
+    //algoritma
     return x=='*' || x=='/' || x=='^' || x=='+' || x=='-';
 }
 
@@ -83,6 +31,7 @@ int isFloat(float x)
   dan 0 jika tidak
 */
 {
+    //algoritma
     if (trunc(x)==x){
         return 0;
     } else {
@@ -95,6 +44,7 @@ int isPangkatValid(float op1, float op2)
   op1 ^ op2
 */
 {
+    //algoritma
     if (op1 < 0 && isFloat(op2)){
         return 0;
     } else if (op1 == 0 && op2 <=0){
@@ -178,7 +128,7 @@ void Simbol(String persamaan, int *indeks, float *hasil, int *status)
                 BilanganKoma(persamaan,indeks,&tempfloat,status);
             }
             (*hasil)=((*hasil)+tempfloat)*sign;
-        }else if(persamaan[*indeks]=='('){
+        }else if(persamaan[*indeks]=='('){ //kasus -()
             (*indeks)++;
             TambahKurang(persamaan,indeks,hasil,status);
             if(persamaan[*indeks]==')'){
@@ -291,9 +241,6 @@ void TambahKurang(String persamaan, int *indeks, float *hasil, int *status)
                     }
                 }
             }
-            // if(persamaan[*indeks]=='.' || persamaan[*indeks]=='(' || persamaan[*indeks]==')' || isOperator(persamaan[*indeks])){
-            //     *status=1;
-            // }
         }
     }
 }

@@ -1,31 +1,12 @@
-
-
-// int isOperator (char x)
-// /*
-//   fungsi bernilai 1 jika jumlah x adalah +,-,*,/,atau^
-// */
-// {
-//     return x=='*' || x=='/' || x=='^' || x=='+' || x=='-';
-// }
-
-// int isNumber(char x)
-// /*
-//   fungsi bernilai 1 jika karakter yang dimasukkan adalah bilangan
-//   dengan 0 <= x <= 9 dan 0 jika tidak
-// */
-// {
-//     //algoritma
-//     if(x>='0' && x<='9'){
-//         return 1;
-//     }else{
-//         return 0;
-//     }
-// }
-
 #include "PDA.h"
 
 void makeProduksi(Aturan *list, int indeks, char dari, char input, char top, char ke, char stack)
+/*
+    I.S. semua parameter terdefinisi
+    F.S. *list berisi semua aturan produksi
+*/
 {
+    //algoritma
     (*list).listProduksi[indeks].stateNow = dari;
     (*list).listProduksi[indeks].input = input;
     (*list).listProduksi[indeks].topOfStack = top;
@@ -33,10 +14,16 @@ void makeProduksi(Aturan *list, int indeks, char dari, char input, char top, cha
     (*list).listProduksi[indeks].stack=stack;
 }
 
-int Search(Aturan list ,char input, char current,char top){
+int Search(Aturan list ,char input, char current,char top)
+/*
+    mengembalikan indeks aturan di list jika ditemukan, -1 jika tidak ditemukan
+*/
+{
+    //kamus
     int found = 0;
     int i = 0;
     char kar;
+    //algoritma
     while(i<N && !found){
         if (isNumber(input)) {
             kar = 'n';
@@ -58,25 +45,35 @@ int Search(Aturan list ,char input, char current,char top){
     }
 }
 
-void DoSomething(Stack *s, char stack){
+void DoSomething(Stack *s, char stack)
+/*
+    melakukan operasi ke stack sesuai dengan karakter stack
+*/
+{
+    //algoritma
     if (stack == 'u'){
         (*s).top++;
         (*s).memory[(*s).top]= 'X';
-        // printf("DS.top= %c\n",(*s).memory[(*s).top]);
-        // printf("push\n");
     } else if (stack == 'o'){
         (*s).top--;
     }
 }
 
 
-
-int PDA(String persamaan){
+int PDA(String persamaan)
+/* 
+    melakukan validasi input, bernilai 1 jika jumlah ( sama dengan ),
+    tidak diakhiri operasi ataupun . dan tidak ada 2 operator yang bersebelahan
+    0 jika tidak
+*/
+{
+    //kamus
     Aturan aturan;
     char current;
     Stack s;
     int indeks,temp=0;
-
+    //algoritma
+    //aturan produksi
     makeProduksi(&aturan,0,'a','(','Z','a','u');
     makeProduksi(&aturan,1,'a','(','X','a','u');
     makeProduksi(&aturan,2,'a','n','Z','a','e');
@@ -96,28 +93,16 @@ int PDA(String persamaan){
     indeks = 0;
 
     while(indeks < strlen(persamaan)&&temp!=-1){
-        // printf("input= %c\n",persamaan[indeks]);
-        // printf("top= %c\n",s.memory[s.top]);
-        // printf("current= %c\n",current);
-        // printf("indeks= %d\n\n",indeks);
         temp=Search(aturan,persamaan[indeks],current,s.memory[s.top]);
-        // printf("aturanke= %d\n\n",temp);
         if(temp!=-1){
             DoSomething(&s,aturan.listProduksi[temp].stack);
             current = aturan.listProduksi[temp].stateGo;
-            
         }
         indeks++;                         
     }
     if (current == 'a' && s.memory[s.top]=='Z'&& indeks == strlen(persamaan)){
-        // printf("accepted\n");
         return 1;
     }else {
-        // printf("top= %c\n",s.memory[s.top]);
-        // printf("current= %c\n",current);
-        // printf("indeks= %d\n",indeks);
-        // printf("refused\n");
         return 0;
     }
-
 }

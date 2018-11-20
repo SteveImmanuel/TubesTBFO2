@@ -1,7 +1,9 @@
 /* Aplikasi CFG dan PDA pada Pengenalan Ekspresi Matematika */
 
 /* Cara Menjalankan Program */
-  User dapat run program secara langsung pada folder bin dan menjalankan program 'main.exe'
+  program dibuat untuk dijalankan pada platform LINUX
+  User dapat run program secara langsung pada folder bin dengan menjalankan command terminal
+  ./main
 
 /* Format Input Pada Program */
   #) user dapat langsung memberi input ekspresi matematika yang ingin dikalkulasi
@@ -28,8 +30,4 @@
 /* Anggota Kelompok */
 - Johanes                 - 13517012
 - Steve Andreas Immanuel  - 13517039
-<<<<<<< HEAD
 - Willy Santoso           - 13517066
-=======
-- Willy Santoso           - 13517066
->>>>>>> include readme

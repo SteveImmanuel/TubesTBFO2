@@ -4,12 +4,9 @@
 #include <stdbool.h>
 #include <unistd.h>
 #include <ctype.h>
-<<<<<<< HEAD
-=======
 #include "operation.h"
 #include "PDA.h"
 
->>>>>>> implementasi pda untuk validasi input
 
 bool isExit(String Kata)
 //fungsi mengeluarkan true jika string yang dimasukkan adalah 'exit'
@@ -20,21 +17,13 @@ bool isExit(String Kata)
 
   //Algoritma
   huruf = strlen(Kata);
-<<<<<<< HEAD
-
-  for(int i=0; Kata[i];i++){
-    Kata[i] = tolower(Kata[i]);
-  }
-
-=======
   for(i=0;i<huruf;i++){
     Kata[i]=tolower(Kata[i]);
   }
->>>>>>> implementasi pda untuk validasi input
   if(huruf!=4)
     found = false;
   else
-    if((Kata[0]=='e') && (Kata[1]=='x') && (Kata[2]=='i') && (Kata[3]=='t'))
+    if(strcmp(Kata,"exit")==0)
       found = true;
     else
       found = false;
@@ -43,36 +32,45 @@ bool isExit(String Kata)
 
 int main(){
   //Kamus
-  String pilihan;
+  String persamaan;
   String input;
-  int status;
+  int status,indeks;
   float hasil;
-  int indeks;
+  
 
   // Algoritma Utama
   do{
     printf("CALCULATOR\n");
     printf("==========\n");
     printf("\n");
-    pilihan = (char*) malloc (100* sizeof(char));
 
+    //alokasi
+    input = (char*) malloc (100* sizeof(char));
     printf(">> ");
-    scanf("\n%[^\n]s", input);
+    scanf("\n%[^\n]s", input); //membaca input
 
-    if(!isExit(input)){
+    if(!isExit(input)){ //menghitung
+      //inisialisasi
       status = 0;
       indeks = 0;
-      lenInput = strlen(input);
-      if(PDA(input)){
-        TambahKurang(input,&indeks,&hasil,&status);
-        if(status==0){
+      if(input[indeks]=='-'){ //input diawali '-'
+        strcpy(persamaan,"0");
+        strcat(persamaan,input);
+      } else{ //input awal bukan '-'
+        strcpy(persamaan,input);
+      }
+      lenInput = strlen(persamaan);
+
+      if(PDA(persamaan)){ //validasi dengan PDA
+        TambahKurang(persamaan,&indeks,&hasil,&status);
+        if(status==0){ //berhasil terhitung
           printf("%f\n",hasil);
         } else if (status == 1){
           printf("SYNTAX ERROR\n");
         } else if (status == 2){
           printf("MATH ERROR\n");
         }
-      }else{
+      }else{ //gagal validasi PDA
         printf("SYNTAX ERROR\n");
       }
       printf("\n");
@@ -83,4 +81,5 @@ int main(){
 
   printf("Terima Kasih!\n");
   sleep(0.75);
+  return 0;
 }
